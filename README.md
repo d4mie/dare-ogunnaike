@@ -1,2 +1,1 @@
-# dareOgunnaike
-# dare-ogunnaike
+this is dare-ogunnaike's portfolio website
