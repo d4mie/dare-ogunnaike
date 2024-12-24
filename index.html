@@ -60,7 +60,6 @@
 
     /* Content Section */
     .container {
-      z-index: 10;
       display: grid;
       grid-template-columns: 6.1fr 6.4fr 5.6fr 6fr 5.8fr;
       /* max-width: fit-content; */
@@ -71,7 +70,7 @@
     /* Individual Column Styling */
    .column {
       font-size: 17px;
-      line-height: 1;
+      line-height: 1.5;
       text-align: left;
       opacity: 1;
       font-family: 'Williams Caslon Text';
@@ -92,7 +91,6 @@
       bottom: 0px;
       width: 100%;
       padding: 10px 20px;
-      font-size: 16px;
       line-height: 1;
     }
 
@@ -102,6 +100,21 @@
       color: inherit;
     }
 
+    @media (max-width: 768) {
+      .container {
+        grid-template-columns: 1fr;
+        gap: 13px;
+      }
+
+      .column {
+        font-size: 15px;
+        line-height: 1.4;
+      }
+
+      .footer {
+        font-size: 12px;
+      }
+    }
   </style>
 </head>
 <body>
