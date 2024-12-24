@@ -70,7 +70,7 @@
     /* Individual Column Styling */
    .column {
       font-size: 17px;
-      line-height: 1.5;
+      line-height: 1;
       text-align: left;
       opacity: 1;
       font-family: 'Williams Caslon Text';
@@ -105,18 +105,32 @@
     .container {
       grid-template-columns: 1fr; /* Switch to a single-column layout */
       grid-template-rows: repeat(4, auto); /* Create 4 rows */
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
     }
 
       .column {
-        font-size: 17px;
-        line-height: 1.4;
+        font-size: 25px;
+        line-height: 1;
         padding: 1rem;
       }
 
-      .footer {
-        font-size: 17px;
+      .slider {
+        flex-shrink: 0;
+        cursor: pointer; /* Indicate that tapping changes slides */
+        touch-action: manipulation; /* Optimize for touchscreens */
       }
-    }
+
+      video {
+        object-fit: cover; /* Make sure videos fill their container */
+        pointer-events: none; /* Disable interaction with videos */
+      }
+
+      .footer {
+        font-size: 25px;
+      }
+  }
   </style>
 </head>
 <body>
@@ -483,6 +497,7 @@
         const videoElement = document.createElement('video');
         videoElement.src = current.image;
         videoElement.autoplay = true;
+        videoElement.playsInline = true;
         videoElement.muted = true;
         videoElement.loop = true;
         videoElement.style.width = '100%';
@@ -490,6 +505,15 @@
         videoElement.style.objectFit = 'cover';
         slider.appendChild(videoElement);
       }
+
+      // Prevent video interaction
+      videoElement.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+      });
+
+      slider.appendChild(videoElement);
+    
 
       // Update footer
       footer.textContent = current.footer;
