@@ -92,6 +92,7 @@
       width: 100%;
       padding: 10px 20px;
       line-height: 1;
+      font-size: 17px;
     }
 
     /* Remove decoration from email link */
@@ -100,19 +101,20 @@
       color: inherit;
     }
 
-    @media (max-width: 768) {
-      .container {
-        grid-template-columns: 1fr;
-        gap: 13px;
-      }
+  @media (max-width: 768px) {
+    .container {
+      grid-template-columns: 1fr; /* Switch to a single-column layout */
+      grid-template-rows: repeat(4, auto); /* Create 4 rows */
+    }
 
       .column {
-        font-size: 15px;
+        font-size: 17px;
         line-height: 1.4;
+        padding: 1rem;
       }
 
       .footer {
-        font-size: 12px;
+        font-size: 17px;
       }
     }
   </style>
