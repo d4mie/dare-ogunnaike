@@ -35,12 +35,17 @@
       padding: 0;
       box-sizing: border-box;
     }
+
+    html {
+      scroll-behavior: smooth;
+    }
   
 
     body {
       width: 100%;
-      height: 100%;
-      overflow: hidden;
+      height: auto;
+      overflow-y: auto;
+      overflow-x: hidden;
       font-family: 'Williams Caslon Text';
     } 
 
@@ -61,8 +66,9 @@
     /* Content Section */
     .container {
       display: grid;
+      overflow: visible;
+      height: auto;
       grid-template-columns: 6.1fr 6.4fr 5.6fr 6fr 5.8fr;
-      /* max-width: fit-content; */
       margin: 1%;
       top: 1%;
     }
@@ -105,31 +111,49 @@
     .container {
       grid-template-columns: 1fr; /* Switch to a single-column layout */
       grid-template-rows: repeat(4, auto); /* Create 4 rows */
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
+      margin: 1%;
+      padding: 1%;
+      gap: 1rem;
+      display: grid;
     }
 
-      .column {
-        font-size: 25px;
-        line-height: 1;
-        padding: 1rem;
-      }
+    .content-container {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column; /* Stack items vertically */
+      gap: 16px;
+      margin: 16px; /* Provide spacing around the content */
+      margin-bottom: calc(100px + 1rem); /* Avoid footer overlap */
+    }
 
-      .slider {
-        flex-shrink: 0;
-        cursor: pointer; /* Indicate that tapping changes slides */
-        touch-action: manipulation; /* Optimize for touchscreens */
-      }
+  .content-item {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    text-align: left;
+  }
 
-      video {
-        object-fit: cover; /* Make sure videos fill their container */
-        pointer-events: none; /* Disable interaction with videos */
-      }
+  .column {
+      font-size: 25px;
+      line-height: 1;
+      word-wrap: break-word;
+      word-break: break-word;
+    }
 
-      .footer {
-        font-size: 25px;
-      }
+  .slider {
+      cursor: pointer; /* Indicate that tapping changes slides */
+      touch-action: manipulation; /* Optimize for touchscreens */
+  }
+
+    video {
+      object-fit: cover; /* Make sure videos fill their container */
+      pointer-events: none; /* Disable interaction with videos */
+    }
+
+    .footer {
+        font-size: 20px;
+    }
   }
   </style>
 </head>
