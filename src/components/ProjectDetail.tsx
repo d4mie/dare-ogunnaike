@@ -126,6 +126,7 @@ const MediaContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 
   /* Hide scrollbar for all browsers */
   &::-webkit-scrollbar {
@@ -137,17 +138,23 @@ const MediaContainer = styled.div`
 `;
 
 const ProjectImage = styled.img`
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
 `;
 
 const ProjectVideo = styled.video`
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
   background: #f8f8f8;
 `;
 
@@ -187,6 +194,46 @@ const NextProjectButton = styled.button`
       margin-left: 8px;
     }
   }
+`;
+
+const ExpandableDescription = styled.div`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 2rem 3rem;
+  transform: translateY(calc(100% - 0.5rem));
+  transition: transform 0.4s ease;
+  z-index: 1000;
+
+  &:hover {
+    transform: translateY(0);
+  }
+`;
+
+const DetailedDescription = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 1rem;
+`;
+
+const DescriptionSection = styled.div`
+  color: black;
+`;
+
+const SectionTitle = styled.h3`
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 0 0 0.5rem;
+  opacity: 0.7;
+`;
+
+const SectionText = styled.p`
+  font-size: 1.1rem;
+  line-height: 1.4;
+  margin: 0;
 `;
 
 const ProjectDetail = () => {
@@ -305,6 +352,28 @@ const ProjectDetail = () => {
         <NextProjectButton onClick={handleNextProject}>
           Next Project
         </NextProjectButton>
+        <ExpandableDescription>
+          <DetailedDescription>
+            <DescriptionSection>
+              <SectionTitle>About the Project</SectionTitle>
+              <SectionText>
+                {project.description || `${project.title} is a ${project.category.toLowerCase()} project that showcases innovative design solutions and creative execution. The project demonstrates attention to detail and a strong focus on user experience.`}
+              </SectionText>
+            </DescriptionSection>
+            <DescriptionSection>
+              <SectionTitle>Process & Approach</SectionTitle>
+              <SectionText>
+                The project began with extensive research and conceptualization, followed by iterative design phases. Working closely with {project.collaborators ? project.collaborators.join(' and ') : 'the team'}, we developed solutions that aligned with the client's vision while pushing creative boundaries.
+              </SectionText>
+            </DescriptionSection>
+            <DescriptionSection>
+              <SectionTitle>Outcome & Impact</SectionTitle>
+              <SectionText>
+                The final deliverables successfully met project objectives, creating a meaningful impact for {project.client || 'the client'}. The work demonstrates our commitment to excellence in {project.category.toLowerCase()}, setting new standards in the field.
+              </SectionText>
+            </DescriptionSection>
+          </DetailedDescription>
+        </ExpandableDescription>
       </ProjectDetailContainer>
     </>
   );
