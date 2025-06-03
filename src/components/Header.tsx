@@ -1,29 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
+import '../styles/typography.css';
 
 const HeaderContainer = styled.header`
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 2rem 3rem;
+  width: 100%;
+  height: 5rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  z-index: 1000;
-  mix-blend-mode: exclusion;
+  justify-content: space-between;
+  padding: 0 3rem;
+  mix-blend-mode: difference;
+  z-index: 1;
   pointer-events: none;
+  font-family: var(--font-primary);
 `;
 
 const Logo = styled.a`
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-size: var(--font-size-nav);
+  font-weight: var(--font-weight-medium);
   color: white;
   margin: 0;
   pointer-events: auto;
   cursor: pointer;
   text-decoration: none;
   display: block;
+  letter-spacing: -0.01em;
 
   &:hover {
     opacity: 0.8;
@@ -38,10 +40,11 @@ const Nav = styled.nav`
 const NavLink = styled.a`
   text-decoration: none;
   color: white;
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-size: var(--font-size-nav);
+  font-weight: var(--font-weight-medium);
   pointer-events: auto;
   cursor: pointer;
+  letter-spacing: -0.01em;
 
   &:hover {
     opacity: 0.8;
