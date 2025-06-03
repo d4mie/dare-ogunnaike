@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dare Ogunnaike</title>
+  <link rel="icon" href="circle-favicon.ico" type="image/x-icon">
+  <link rel="icon" href="circle-favicon.png" type="image/png">
+  <link rel="icon" href="circle-favicon.svg" type="image/svg+xml">
+
+  <style>
+
+  /* Define the Williams Caslon Text font family */
+  @font-face {
+    font-family: 'Williams Caslon Text';
+    src: url('fonts/Williams Caslon Text/WilliamsCaslonText-Regular.otf') format('truetype');
+    font-weight: 400; /* Regular */
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Williams Caslon Text';
+    src: url('fonts/Williams Caslon Text/WilliamsCaslonText-Bold.otf') format('truetype');
+    font-weight: 700; /* Bold */
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Williams Caslon Text';
+    src: url('fonts/Williams Caslon Text/WilliamsCaslonText-Italic.otf') format('truetype');
+    font-weight: 400; /* Regular Italic */
+    font-style: italic;
+  }
+
+
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+  
+    body {
+      width: 100%;
+      height: auto;
+      overflow-x: hidden;
+      font-family: 'Williams Caslon Text';
+    } 
+
+    /* Fullscreen Slider */
+    .slider {
+      position: fixed;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      image-rendering: crisp-edges;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: opacity 700ms ease-in-out;
+    }
+
+    /* Content Section */
+    .container {
+      display: grid;
+      overflow: visible;
+      height: auto;
+      max-width: 2000px;
+      grid-template-columns: 5fr 5fr 4fr 5fr 3fr;
+      column-gap: 27px;
+      margin: 1%;
+      top: 1%;
+    }
+
+    /* Individual Column Styling */
+    .column {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1;
+      text-align: left;
+      font-style: normal;
+      color: rgba(0, 0, 0, 0.75);
+      font-family: 'Williams Caslon Text';
+    }
+
+    .container .column {
+      mix-blend-mode: exclusion;
+      color: white; /* Default text color for blend effect */
+      position: relative;
+      z-index: 10; /* Ensures text is on top of the background */
+    }
+
+    /*Footer text */
+    .footer {
+      margin-left: 1%;
+      bottom: 1%;
+      position: fixed;
+    }
+
+    /* Remove decoration from email link */
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+  @media (max-width: 768px) {
+    body {
+      overflow-y: auto;
+      height: 100vh;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      grid-auto-rows: auto;
+      gap: 1rem;
+      font-size: 19.5px;
+      z-index: 10;
+      top: 0;
+      grid-template-columns: 1fr; /* Switch to a single-column layout */
+      margin: 2%;
+      padding: 2%;
+      display: grid;
+    }
+
+    .column {
+      font-size: 20px;
+      line-height: 1;
+      word-wrap: break-word;
+      word-break: break-word;
+    }
+
+    .slider {
+      cursor: pointer; /* Indicate that tapping changes slides */
+      touch-action: manipulation; /* Optimize for touchscreens */
+      height: 100vh;
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
+      transition: opacity 700ms ease-in-out;
+    }
+
+    video {
+      object-fit: cover; /* Make sure videos fill their container */
+      pointer-events: none; /* Disable interaction with videos */
+    }
+
+    .footer {
+      font-size: 17px;
+      bottom: 2%;
+      margin: 2%;
+      padding: 2%;
+    }
+  }
+  </style>
+</head>
+
+<body>
+  <div class="slider" id="slider"></div>
+
+
+  <div class="container">
+    <div class="column">
+      <p>Dare is an Art Director & Graphic 
+        Designer at BELONWUS.
+        Previously, he was a Brand Designer
+        at Rise Vest. He received a
+        BSc in Architecture from the
+        University of Lagos in 2017 and
+        has since built a multifaceted and
+        dynamic career in design, spanning
+        architecture, industrial design,
+        and set design.</p>
+    </div>
+    <div class="column">
+      <p>Through his work at Belonwus,
+        Dare has collaborated on projects for
+        Sporting Lagos, Bamboo, Spotify, OctaFX,
+        Piggyvest, Stanbic IBTC, 9mobile, and more.
+        He led the design of the Rise Vest office
+        building in Lagos, redefining the traditional
+        workspace with design solutions that
+        prioritised environmental efficiency,
+        brand ethos and aesthetic appeal.</p>
+    </div>
+    <div class="gap"></div> <!-- Empty space in the center -->
+    <div class="column">
+      <p>He worked with Afrominima to
+        design furniture, household objects,
+        and boutique spaces. His influence
+        in the creative field has been
+        highlighted through talks and projects
+        showcased at creative forums like
+        UnderTheHood hosted by Cowrywise
+        and The Huddle.</p>
+    </div>
+    <div class="column">
+      <p>This is a temporary site.<br>
+        Any inquiries contact:<br>
+        <a href="mailto:dareogunnaike@gmail.com">dareogunnaike@gmail.com</a></p>
+    </div>
+  </div>
+
+  <footer id="footer" class="footer">9mobile Set Design with Belonwus</footer>
+    
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const slides = [
+      {
+        image: 'images/OctaFx TVC with Belonwus.mp4',
+        footer: 'OctaFx TVC with Belonwus',
+        type: 'video'
+      },
+
+      {
+        image: 'images/Babban Goan Identity.mp4',
+        footer: 'Babban Goan Identity',
+        type: 'video'
+      },
+
+      {
+        image:  'images/9mobile Set Design with Belonwus_04.jpg',
+        footer: '9mobile Set Design with Belonwus',
+        type: 'image'
+      },
+
+      {
+        image:  'images/Pocket Set Design with Belonwus_05.jpg',
+        footer: 'Pocket Set Design with Belonwus',
+        type: 'image'
+      },
+
+      {
+        image:  'images/Bathroom Design with DHK_01.jpg',
+        footer: 'Bathroom Design with DHK',
+        type: 'image'
+      },
+
+      {
+        image:  'images/Spotify with Belonwus_03.jpg',
+        footer: 'Spotify with Belonwus',
+        type: 'image'
+      },
+
+      {
+        image: 'images/Joko Stool with Afrominima.jpg',
+        footer: 'Joko Stool with Afrominima',
+        type: 'image'
+      },
+
+      {
+        image:  'images/Bamboo Identity with Belonwus_01.mp4',
+        footer: 'Bamboo Identity with Belonwus',
+        type: 'video'
+      },
+
+      
+      {
+        image:  'images/Minies Kitchen Brand Identity_06.mp4',
+        footer: 'Minies Kitchen Brand Identity',
+        type: 'video'
+      },
+
+      {
+        image: 'images/Octa with Belonwus_02.jpg.jpg',
+        footer: 'Octa with Belonwus',
+        type: 'image'
+      },
+
+      {
+        image:  'images/Babban Gona Identity.jpg',
+        footer: 'Babban Gona Identity',
+        type: 'image'
+      },
+
+      {
+        image:  'images/Sporting Lagos Identity with Belonwus_04.jpg',
+        footer: 'Sporting Lagos Identity with Belonwus',
+        type: 'image'
+      },
+
+      {
+        image:  'images/Rise HQ with DHK_03.jpg',
+        footer: 'Rise HQ with DHK',
+        type: 'image'
+      },
+
+      {
+        image: 'images/Dang Set Design with Belonwus.jpg',
+        footer: 'Dang Set Design with Belonwus',
+        type: 'image'
+      },
+
+      {
+        image: 'images/Octafx Installation with Belonwus.jpg',
+        footer: 'Octafx Installation with Belonwus',
+        type: 'image'
+      },
+
+      {
+        image:  'images/Fund$ Music Video with Belonwus.mp4',
+        footer: 'Fund$ Music Video with Belonwus',
+        type: 'video'
+      },
+
+      {
+        image: 'images/Maggi with Belonwus_01.jpg',
+        footer: 'Maggi with Belonwus',
+        type: 'image'
+      },
+
+      {
+        image: 'images/Spotify with Belonwus_02.jpg',
+        footer: 'Spotify with Belonwus',
+        type: 'image'
+      },
+
+      {
+        image:  'images/Minies Kitchen Brand Identity_02.jpg',
+        footer: 'Minies Kitchen Brand Identity',
+        type: 'image'
+      },
+
+      {
+        image: 'images/Pocket Set Design with Belonwus_04.jpg',
+        footer: 'Pocket Set Design with Belonwus',
+        type: 'image'
+      },
+
+      {
+        image: 'images/9mobile Set Design with Belonwus_05.mp4',
+        footer: '9mobile Set Design with Belonwus',
+        type: 'video'
+      },
+
+      {
+        image: 'images/Rise HQ with DHK_01.jpg',
+        footer: 'Rise HQ with DHK',
+        type: 'image'
+      },
+
+      {
+        image: 'images/Sporting Lagos Identity with Belonwus_03.mp4',
+        footer: 'Sporting Lagos Identity with Belonwus',
+        type: 'video'
+      },
+
+      {
+        image:  'images/Bathroom Design with DHK_03.jpg.jpg',
+        footer: 'Bathroom Design with DHK',
+        type: 'image'
+      },
+
+      {
+        image: 'images/Octa with Belonwus_01.jpg',
+        footer: 'Octa with Belonwus',
+        type: 'image'
+      },
+
+      {
+        image: 'images/Bamboo Identity with Belonwus_03.mp4',
+        footer: 'Bamboo Identity with Belonwus',
+        type: 'video'
+      },
+
+      {
+        image: 'images/Maggi with Belonwus_02.jpg.jpg',
+        footer: 'Maggi with Belonwus',
+        type: 'image'
+      },
+
+      {
+        image: 'images/Minies Kitchen Brand Identity_01.jpg',
+        footer: 'Minies Kitchen Brand Identity',
+        type: 'image'
+      },
+      
+      {
+        image: 'images/Pocket Set Design with Belonwus_06.jpg',
+        footer: 'Pocket Set Design with Belonwus',
+        type: 'image'
+      },
+
+      {
+        image: 'images/9mobile Set Design with Belonwus_03.jpg',
+        footer: '9mobile Set Design with Belonwus',
+        type: 'image'
+      },
+
+      {
+        image: 'images/Spotify with Belonwus_01.jpg',
+        footer: 'Spotify with Belonwus',
+        type: 'image'
+      },
+
+      {
+        image: 'images/Bamboo Identity with Belonwus_02.mp4',
+        footer: 'Bamboo Identity with Belonwus',
+        type: 'video'
+      },
+
+      {
+        image: 'images/Sporting Lagos Identity with Belonwus_01.mp4',
+        footer: 'Sporting Lagos Identity with Belonwus',
+        type: 'video'
+      },
+
+      {
+        image: 'images/Bathroom Design with DHK_02.jpg',
+        footer: 'Bathroom Design with DHK',
+        type: 'image'
+      },
+
+      {
+        image: 'images/Rise HQ with DHK_04.jpg',
+        footer: 'Rise HQ with DHK',
+        type: 'image'
+      },
+
+      {
+        image: 'images/Pocket Set Design with Belonwus_02.jpg',
+        footer: 'Pocket Set Design with Belonwus',
+        type: 'image'
+      },
+
+      {
+        image: 'images/9mobile Set Design with Belonwus_01.jpg',
+        footer: '9mobile Set Design with Belonwus',
+        type: 'image'
+      },
+
+      {
+        image: 'images/Minies Kitchen Brand Identity_03.jpg',
+        footer: 'Minies Kitchen Brand Identity',
+        type: 'image'
+      },
+
+      {
+        image: 'images/Sporting Lagos Identity with Belonwus_02.mp4',
+        footer: 'Sporting Lagos Identity with Belonwus',
+        type: 'video'
+      },
+
+      {
+        image: 'images/Rise HQ with DHK_02.jpg',
+        footer: 'Rise HQ with DHK',
+        type: 'image'
+      },
+
+      {
+        image: 'images/Pocket Set Design with Belonwus_03.jpg',
+        footer: 'Pocket Set Design with Belonwus',
+        type: 'image'
+      },
+
+      {
+        image: 'images/Minies Kitchen Brand Identity_05.jpg',
+        footer: 'Minies Kitchen Brand Identity',
+        type: 'image'
+      },
+
+      {
+        image: 'images/9mobile Set Design with Belonwus_02.jpg',
+        footer: '9mobile Set Design with Belonwus',
+        type: 'image'
+      },
+
+      {
+        image: 'images/Pocket Set Design with Belonwus_01.jpg',
+        footer: 'Pocket Set Design with Belonwus',
+        type: 'image'
+      },
+
+      {
+        image: 'images/Minies Kitchen Brand Identity_04.jpg',
+        footer: 'Minies Kitchen Brand Identity',
+        type: 'image'
+      },
+    ];
+
+
+
+    let currentSlide = 0;
+    const slider = document.getElementById('slider');
+    const footer = document.getElementById('footer');
+    const textElements = document.querySelectorAll('.container .column, .footer');
+
+    // Preload media for smoother transitions
+    const preloadMedia = () => {
+      slides.forEach(slide => {
+        if (slide.type === 'image') {
+          const img = new Image();
+          img.src = slide.image;
+        } else if (slide.type === 'video') {
+          const video = document.createElement('video');
+          video.src = slide.image;
+          video.preload = 'auto';
+        }
+      });
+    };
+
+    // Update slide content with blend mode
+    const updateSlide = () => {
+      const current = slides[currentSlide];
+
+      // Clear existing content
+      slider.innerHTML = '';
+      slider.style.backgroundImage = '';
+
+      // Handle images
+      if (current.type === 'image') {
+        slider.style.backgroundImage = `url('${current.image}')`;
+      }
+
+      // Handle videos
+      if (current.type === 'video') {
+        const videoElement = document.createElement('video');
+        videoElement.src = current.image;
+        videoElement.autoplay = true;
+        videoElement.playsInline = true;
+        videoElement.muted = true;
+        videoElement.loop = true;
+        videoElement.style.width = '100%';
+        videoElement.style.height = '100%';
+        videoElement.style.objectFit = 'cover';
+        slider.appendChild(videoElement);
+
+        // Prevent video interaction
+        videoElement.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+        });
+        slider.appendChild(videoElement);
+      }
+    
+
+      // Update footer
+      footer.textContent = current.footer;
+
+      // Apply blend mode for text
+      textElements.forEach(element => {
+        element.style.mixBlendMode = 'exclusion';
+        element.style.color = 'white'; // Initial color for blend mode
+      });
+    };
+
+    // Go to the next slide
+    const nextSlide = () => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      updateSlide();
+    };
+
+    // Auto-slide functionality
+    let slideInterval = setInterval(nextSlide, 4000);
+
+    // Stop auto-slide on manual interaction
+    document.addEventListener('click', () => {
+      clearInterval(slideInterval);
+      slideInterval = null;
+      nextSlide();
+    });
+
+    // Initialize the slider
+    preloadMedia();
+    updateSlide();
+  });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Detect mobile view
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+      if (isMobile) {
+        // Disable scrolling on rows
+        const rows = document.querySelectorAll('.row');
+        rows.forEach(row => {
+          row.style.overflow = 'hidden';
+    });
+
+        // Enable independent scrolling for the slider
+          const slider = document.querySelector('.slider');
+          if (slider) {
+            slider.style.overflowY = 'scroll';
+          }
+          
+/*
+          // Ensure footer remains scrollable along with the slider
+          const footer = document.querySelector('.footer');
+          if (footer) {
+            footer.style.position = 'relative';
+          } */
+      }
+  });
+  </script>
+
+</body>
+</html>  
