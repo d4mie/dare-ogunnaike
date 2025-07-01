@@ -36,17 +36,27 @@ const AboutMe = () => (
           </div>
           <div className="contact-description-refs">
             <h2>Clients</h2>
-            <ul>
-              <li>Client 1</li>
-              <li>Client 2</li>
-              <li>Client 3</li>
+            <ul className="about-contact-list">
+              <li>Bamboo</li>
+              <li>Risevest</li>
+              <li>OctaFx</li>
+              <li>Sporting Lagos</li>
+              <li>Spotify</li>
+              <li>Pocket</li>
+              <li>Maggi</li>
+              <li>Babban Gona</li>
+              <li>9mobile</li>
             </ul>
           </div>
           <div className="contact-description-refs">
             <h2>Contributors</h2>
-            <ul>
-              <li>Contributor 1</li>
-              <li>Contributor 2</li>
+            <ul className="about-contact-list">
+              <li>Jordan</li>
+              <li>Wale</li>
+              <li>Richard</li>
+              <li>Ogbeni Seyi</li>
+              <li>Ife</li>
+              <li>Joseph</li>
             </ul>
           </div>
         </div>
