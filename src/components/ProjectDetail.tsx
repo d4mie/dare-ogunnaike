@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { projects, Project } from './PortfolioGrid';
@@ -87,6 +87,18 @@ const MediaGrid = styled.div`
   margin: 0;
 `;
 
+const CustomCursor = styled.div<{ x: number; y: number; visible: boolean }>`
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 2000;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  opacity: ${({ visible }) => (visible ? 1 : 0)};
+  transition: opacity 0.18s cubic-bezier(0.4,0,0.2,1);
+`;
+
 const MediaContainer = styled.div`
   display: flex;
   align-items: center;
@@ -101,7 +113,7 @@ const MediaContainer = styled.div`
   box-shadow: 0 4px 24px rgba(0,0,0,0.07);
   position: relative;
   overflow: hidden;
-  cursor: pointer;
+  cursor: none;
 `;
 
 const ProjectImage = styled.img`
@@ -224,6 +236,8 @@ const ProjectDetail = () => {
   const { projectId } = useParams<{ projectId: string }>();
   const navigate = useNavigate();
   const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
+  const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false, side: 'right' });
+  const mediaRef = useRef<HTMLDivElement>(null);
 
   const project = projects.find((p: Project) => p.id === Number(projectId));
 
@@ -253,6 +267,19 @@ const ProjectDetail = () => {
   // Compose technical details string
   const techDetails = [project.category, project.year, project.role, project.client].filter(Boolean).join(', ');
 
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!mediaRef.current) return;
+    const rect = mediaRef.current.getBoundingClientRect();
+    const x = e.clientX;
+    const y = e.clientY;
+    const side = (x - rect.left) < rect.width / 2 ? 'left' : 'right';
+    setCursor({ x, y, visible: true, side });
+  };
+
+  const handleMouseLeave = () => {
+    setCursor((c) => ({ ...c, visible: false }));
+  };
+
   return (
     <ProjectDetailContainer>
       <BackButton onClick={() => navigate('/portfolio')}>← Back</BackButton>
@@ -261,7 +288,12 @@ const ProjectDetail = () => {
         <HeaderLink to="/about">About</HeaderLink>
       </ProjectHeader>
       <MediaGrid>
-        <MediaContainer onClick={handleMediaClick} style={{ cursor: 'pointer' }}>
+        <MediaContainer
+          ref={mediaRef}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          onClick={handleMediaClick}
+        >
           {media.type === 'video' ? (
             <ProjectVideo
               src={media.src}
@@ -277,6 +309,17 @@ const ProjectDetail = () => {
               alt={media.alt || `${project.title} - Image ${currentMediaIndex + 1}`}
             />
           )}
+          <CustomCursor x={cursor.x} y={cursor.y} visible={cursor.visible} style={{ left: cursor.x, top: cursor.y }}>
+            {cursor.side === 'left' ? (
+              <svg width="50" height="70" viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M35 10L15 35L35 60" stroke="#000" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            ) : (
+              <svg width="50" height="70" viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 10L35 35L15 60" stroke="#000" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            )}
+          </CustomCursor>
         </MediaContainer>
       </MediaGrid>
       <InfoBarWrapper>
