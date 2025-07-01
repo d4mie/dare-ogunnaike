@@ -6,9 +6,15 @@ export interface Project {
   id: number;
   title: string;
   category: string;
+  description?: string;
+  client?: string;
+  year?: string;
+  role?: string;
+  collaborators?: string[];
   images: {
     src: string;
     type: 'image' | 'video';
+    alt?: string;
   }[];
 }
 
@@ -89,42 +95,39 @@ const ProjectCategory = styled.p`
   letter-spacing: -0.01em;
 `;
 
-const LoadingOverlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #f0f0f0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0.8;
-`;
-
 // Project data organized by series
 export const projects: Project[] = [
   {
     id: 1,
     title: "9mobile Set Design",
     category: "Set Design",
+    description: "A dynamic set design project for 9mobile's brand campaign, featuring innovative spatial design and lighting solutions.",
+    client: "9mobile",
+    year: "2023",
+    role: "Set Designer",
+    collaborators: ["Belonwus"],
     images: [
-      { src: "/images/9mobile Set Design with Belonwus_01.jpg", type: "image" },
-      { src: "/images/9mobile Set Design with Belonwus_02.jpg", type: "image" },
-      { src: "/images/9mobile Set Design with Belonwus_03.jpg", type: "image" },
-      { src: "/images/9mobile Set Design with Belonwus_04.jpg", type: "image" },
-      { src: "/images/9mobile Set Design with Belonwus_05.mp4", type: "video" },
+      { src: "/images/9mobile Set Design with Belonwus_01.jpg", type: "image", alt: "9mobile set design main view" },
+      { src: "/images/9mobile Set Design with Belonwus_02.jpg", type: "image", alt: "9mobile set design detail" },
+      { src: "/images/9mobile Set Design with Belonwus_03.jpg", type: "image", alt: "9mobile set design perspective" },
+      { src: "/images/9mobile Set Design with Belonwus_04.jpg", type: "image", alt: "9mobile set design lighting" },
+      { src: "/images/9mobile Set Design with Belonwus_05.mp4", type: "video", alt: "9mobile set design in motion" },
     ]
   },
   {
     id: 2,
     title: "Rise HQ",
     category: "Interior Design",
+    description: "Modern office interior design for Rise's headquarters, focusing on functionality and contemporary aesthetics.",
+    client: "Rise",
+    year: "2023",
+    role: "Interior Designer",
+    collaborators: ["DHK"],
     images: [
-      { src: "/images/rise HQ with DHK_01.jpg", type: "image" },
-      { src: "/images/rise HQ with DHK_02.jpg", type: "image" },
-      { src: "/images/rise HQ with DHK_03.jpg", type: "image" },
-      { src: "/images/rise HQ with DHK_04.jpg", type: "image" },
+      { src: "/images/rise HQ with DHK_01.jpg", type: "image", alt: "Rise HQ main office space" },
+      { src: "/images/rise HQ with DHK_02.jpg", type: "image", alt: "Rise HQ meeting area" },
+      { src: "/images/rise HQ with DHK_03.jpg", type: "image", alt: "Rise HQ workspace detail" },
+      { src: "/images/rise HQ with DHK_04.jpg", type: "image", alt: "Rise HQ common area" },
     ]
   },
   {

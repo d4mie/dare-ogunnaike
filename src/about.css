@@ -1,0 +1,182 @@
+/* Minimalist, elegant About page styling */
+
+main {
+  padding: 7vh 4rem 3.5rem;
+  background: #fff;
+}
+
+.contact {
+  border-top: solid 1px #000;
+}
+
+.contact-description {
+  padding: 2rem 0 0;
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+}
+
+.contact-description > div {
+  width: 50%;
+  flex: 1;
+}
+
+.contact-description-item p {
+  margin: 0 0 2rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.contact-description-item p span {
+  margin-right: 1.5rem;
+  font-weight: 500;
+  color: #888;
+}
+
+.contact-description-refs {
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 2rem;
+  margin: 0 0 2rem;
+  border-bottom: solid 1px #000;
+}
+
+.contact-description-refs:last-child {
+  border-bottom: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-description-refs h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.7rem;
+  color: #444;
+}
+
+.contact-description-refs ul {
+  line-height: 1.5;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.contact-description-refs ul li {
+  margin-bottom: 0.5rem;
+}
+
+.contact-description-refs ul a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.contact-description-refs ul a:hover {
+  opacity: 0.3;
+}
+
+@media (max-width: 850px) {
+  main {
+    padding-right: 2.5rem;
+  }
+  .contact-description {
+    flex-direction: column;
+    padding: 3vh 0 2rem;
+    gap: 0;
+  }
+  .contact-description > div {
+    width: 100%;
+    display: block;
+  }
+  .contact-description-item p {
+    margin: 0 0 1.2rem;
+  }
+  .contact-description-refs {
+    margin: 0 0 2rem;
+    border-bottom: 0;
+  }
+  .contact-description-refs h2 {
+    margin: 0 0 1rem;
+  }
+}
+
+body {
+  font-family: 'NeueHaasGroteskText Pro', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', helvetica, arial, sans-serif;
+  background: #fff;
+  color: #181818;
+}
+
+.about-me-container {
+  max-width: 700px;
+  margin: 4rem auto 2rem auto;
+  padding: 0 1.5rem;
+  font-family: 'NeueHaasGroteskText Pro', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', helvetica, arial, sans-serif;
+  color: #181818;
+  background: none;
+  text-align: left;
+}
+
+.about-me-container h1 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 2.2rem;
+  letter-spacing: -0.01em;
+}
+
+.about-me-container p {
+  font-size: 1.08rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+.about-me-container section {
+  margin-bottom: 2.5rem;
+}
+
+.about-me-container h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.7rem;
+  color: #444;
+}
+
+.about-me-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about-me-container li {
+  font-size: 1.01rem;
+  line-height: 1.7;
+  margin-bottom: 0.3rem;
+  color: #222;
+}
+
+.about-contact-list li b {
+  font-weight: 500;
+  color: #444;
+  margin-right: 0.5em;
+}
+
+@media (max-width: 600px) {
+  .about-me-container {
+    max-width: 98vw;
+    padding: 0 0.7rem;
+    margin: 2.5rem 0 1.5rem 0;
+  }
+  .about-me-container h1 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+  }
+  .about-me-container h2 {
+    font-size: 0.95rem;
+  }
+}
+  

@@ -49,16 +49,15 @@ const CenteredText = styled.h1`
 const images = [
   '/images/Sporting%20Lagos%20Identity%20with%20Belonwus_04.jpg',
   '/images/rise%20HQ%20with%20DHK_01.jpg',
-  '/images/Bathroom%20Design%20with%20DHK_01.jpg',
+  '/images/Pocket%20Set%20Design%20with%20Belonwus_01.jpg',
   '/images/Spotify%20with%20Belonwus_01.jpg',
   '/images/Minies%20Kitchen%20Brand%20Identity_01.jpg',
   '/images/Babban%20Gona%20Identity.jpg',
-  '/images/Maggi%20with%20Belonwus_01.jpg'
+  '/images/9mobile%20Set%20Design%20with%20Belonwus_01.jpg'
 ];
 
 const Bureau = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(-1);
-  const [imagesLoaded, setImagesLoaded] = useState<boolean[]>(new Array(images.length).fill(false));
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -70,11 +69,6 @@ const Bureau = () => {
       
       img.onload = () => {
         console.log(`Successfully loaded image: ${src}`);
-        setImagesLoaded(prev => {
-          const newState = [...prev];
-          newState[index] = true;
-          return newState;
-        });
       };
       
       img.onerror = (error) => {

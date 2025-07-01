@@ -1,29 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'; // Import Link
+// import '../styles/typography.css'; // Path seems correct, error might be elsewhere or a subtle issue
 
 const HeaderContainer = styled.header`
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 2rem 3rem;
+  width: 100%;
+  height: 5rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  z-index: 1000;
-  mix-blend-mode: exclusion;
+  justify-content: space-between;
+  padding: 0 3rem;
+  mix-blend-mode: difference;
+  z-index: 1;
   pointer-events: none;
+  font-family: var(--font-primary);
 `;
 
 const Logo = styled.a`
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-size: var(--font-size-nav);
+  font-weight: var(--font-weight-medium);
   color: white;
   margin: 0;
   pointer-events: auto;
   cursor: pointer;
   text-decoration: none;
   display: block;
+  letter-spacing: -0.01em;
 
   &:hover {
     opacity: 0.8;
@@ -35,13 +38,14 @@ const Nav = styled.nav`
   gap: 3rem;
 `;
 
-const NavLink = styled.a`
+const NavLink = styled(Link)` // Change styled.a to styled(Link)
   text-decoration: none;
   color: white;
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-size: var(--font-size-nav);
+  font-weight: var(--font-weight-medium);
   pointer-events: auto;
   cursor: pointer;
+  letter-spacing: -0.01em;
 
   &:hover {
     opacity: 0.8;
@@ -53,8 +57,8 @@ const Header = () => {
     <HeaderContainer>
       <Logo href="/">Dare.Ogunnaike</Logo>
       <Nav>
-        <NavLink href="#work">Work</NavLink>
-        <NavLink href="#about">About</NavLink>
+        <NavLink to="/">Work</NavLink> {/* Assuming "Work" should also navigate to home or a specific work section */}
+        <NavLink to="/about">About</NavLink> {/* Change href to to="/about" */}
       </Nav>
     </HeaderContainer>
   );
