@@ -13,6 +13,9 @@ const BackButton = styled.button`
   position: fixed;
   top: 2rem;
   left: 3rem;
+  position: fixed;
+  top: 2rem;
+  left: 3rem;
   background: none;
   border: none;
   font-size: 1.1rem;
@@ -20,6 +23,9 @@ const BackButton = styled.button`
   cursor: pointer;
   padding: 0;
   font-family: inherit;
+  z-index: 1000;
+  mix-blend-mode: difference;
+  color: white;
   z-index: 1000;
   mix-blend-mode: difference;
   color: white;
@@ -54,13 +60,19 @@ const HeaderLink = styled(Link)`
 
 const ProjectTitle = styled.h1`
   font-size: 1.1rem;
+  font-size: 1.1rem;
   font-weight: 500;
+  margin: 0;
+  color: white;
   margin: 0;
   color: white;
 `;
 
 const ProjectCategory = styled.p`
   font-size: 1.1rem;
+  margin: 0;
+  font-weight: 500;
+  color: white;
   margin: 0;
   font-weight: 500;
   color: white;
@@ -71,7 +83,13 @@ const ProjectInfo = styled.div`
   bottom: 2rem;
   left: 3rem;
   right: 3rem;
+const ProjectInfo = styled.div`
+  position: fixed;
+  bottom: 2rem;
+  left: 3rem;
+  right: 3rem;
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
   z-index: 1000;

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom'; // Import Link
-// import '../styles/typography.css'; // Path seems correct, error might be elsewhere or a subtle issue
+import '../styles/typography.css';
 
 const HeaderContainer = styled.header`
   position: fixed;
