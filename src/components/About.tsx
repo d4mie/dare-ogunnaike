@@ -8,7 +8,9 @@ const AboutMe = () => (
         <div className="contact-description-item">
           <p><span>EN</span> Dare.Ogunnaike is an Art Director & Graphic Designer at BELONWUS. Previously, he was a Brand Designer at Rise Vest. He received a BSc in Architecture from the University of Lagos in 2017 and has since built a multifaceted and dynamic career in design, spanning architecture, industrial design, and set design.</p>
           <p><span>FR</span> Dare.Ogunnaike est directeur artistique et graphiste chez BELONWUS. Auparavant, il était designer de marque chez Rise Vest. Il a obtenu une licence en architecture à l'Université de Lagos en 2017 et a depuis mené une carrière polyvalente et dynamique dans le design, couvrant l'architecture, le design industriel et la scénographie.</p>
-          <p className="about-hello">Hello 👋 don't hesitate to write to us to receive a detailed portfolio, or to meet and discuss a project.</p>
+          <h1 className="about-title">
+            Hello <span className="wave" role="img" aria-label="waving hand">👋</span> don&apos;t hesitate to write to us to receive a detailed portfolio, or to meet and discuss a project.
+          </h1>
         </div>
         <div>
           <div className="contact-description-refs">
