@@ -20,19 +20,31 @@ export interface Project {
 
 const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2.5rem 1.5rem;
-  padding: 4rem 3rem 3rem;
-  max-width: 1800px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4.5rem 3.5rem;
+  padding: 6.5rem 4vw 4rem 4vw;
+  max-width: 1600px;
   margin: 0 auto;
-  box-sizing: border-box;
   width: 100%;
+  background: none;
+  box-sizing: border-box;
+
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem 2rem;
+    padding: 5rem 3vw 3rem 3vw;
+  }
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+    gap: 2.2rem 0;
+    padding: 3.5rem 2vw 2rem 2vw;
+  }
 `;
 
 const ProjectCard = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 1.2rem;
   width: 100%;
 `;
 
@@ -41,7 +53,7 @@ const MediaContainer = styled.div`
   aspect-ratio: 4/3;
   overflow: hidden;
   cursor: pointer;
-  background: #f8f8f8;
+  background: #fff;
   width: 100%;
 `;
 
@@ -49,7 +61,7 @@ const ProjectImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
 
   &:hover {
     transform: scale(1.03);
@@ -60,8 +72,8 @@ const ProjectVideo = styled.video`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  background: #f8f8f8;
-  transition: transform 0.4s ease;
+  background: #fff;
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
 
   &:hover {
     transform: scale(1.03);
@@ -69,30 +81,34 @@ const ProjectVideo = styled.video`
 `;
 
 const ProjectInfo = styled.div`
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 0.5rem;
-  font-family: 'NeueHaasGroteskText Pro', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', helvetica, arial, sans-serif;
-  padding: 0 0.25rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-family: 'Alpha', 'NeueHaasGroteskText Pro', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', helvetica, arial, sans-serif;
+  padding: 0 0.1rem;
 `;
 
 const ProjectTitle = styled.h3`
   margin: 0;
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: #000;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  font-family: 'Alpha', 'NeueHaasGroteskText Pro', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', helvetica, arial, sans-serif;
+  font-size: 2.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #111;
+  line-height: 1.08;
 `;
 
 const ProjectCategory = styled.p`
   margin: 0;
   font-size: 1.05rem;
-  color: #000;
-  font-weight: 500;
+  color: #888;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
   text-align: right;
   line-height: 1.1;
-  letter-spacing: -0.01em;
 `;
 
 // Project data organized by series
