@@ -99,6 +99,12 @@ const CustomCursor = styled.div<{ x: number; y: number; visible: boolean }>`
   transition: opacity 0.18s cubic-bezier(0.4,0,0.2,1);
 `;
 
+const ProjectDetailPage = styled.div`
+  width: 100vw;
+  min-height: 100vh;
+  cursor: none;
+`;
+
 const MediaContainer = styled.div`
   display: flex;
   align-items: center;
@@ -237,7 +243,6 @@ const ProjectDetail = () => {
   const navigate = useNavigate();
   const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
   const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false, side: 'right' });
-  const mediaRef = useRef<HTMLDivElement>(null);
 
   const project = projects.find((p: Project) => p.id === Number(projectId));
 
@@ -268,11 +273,9 @@ const ProjectDetail = () => {
   const techDetails = [project.category, project.year, project.role, project.client].filter(Boolean).join(', ');
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!mediaRef.current) return;
-    const rect = mediaRef.current.getBoundingClientRect();
     const x = e.clientX;
     const y = e.clientY;
-    const side = (x - rect.left) < rect.width / 2 ? 'left' : 'right';
+    const side = x < window.innerWidth / 2 ? 'left' : 'right';
     setCursor({ x, y, visible: true, side });
   };
 
@@ -288,39 +291,41 @@ const ProjectDetail = () => {
         <HeaderLink to="/about">About</HeaderLink>
       </ProjectHeader>
       <MediaGrid>
-        <MediaContainer
-          ref={mediaRef}
+        <ProjectDetailPage
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          onClick={handleMediaClick}
         >
-          {media.type === 'video' ? (
-            <ProjectVideo
-              src={media.src}
-              autoPlay
-              muted
-              loop
-              playsInline
-              controls={false}
-            />
-          ) : (
-            <ProjectImage
-              src={media.src}
-              alt={media.alt || `${project.title} - Image ${currentMediaIndex + 1}`}
-            />
-          )}
           <CustomCursor x={cursor.x} y={cursor.y} visible={cursor.visible} style={{ left: cursor.x, top: cursor.y }}>
             {cursor.side === 'left' ? (
-              <svg width="50" height="70" viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M35 10L15 35L35 60" stroke="#000" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="36,8 12,24 36,40" fill="#000" />
               </svg>
             ) : (
-              <svg width="50" height="70" viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 10L35 35L15 60" stroke="#000" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="12,8 36,24 12,40" fill="#000" />
               </svg>
             )}
           </CustomCursor>
-        </MediaContainer>
+          <MediaContainer
+            onClick={handleMediaClick}
+          >
+            {media.type === 'video' ? (
+              <ProjectVideo
+                src={media.src}
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls={false}
+              />
+            ) : (
+              <ProjectImage
+                src={media.src}
+                alt={media.alt || `${project.title} - Image ${currentMediaIndex + 1}`}
+              />
+            )}
+          </MediaContainer>
+        </ProjectDetailPage>
       </MediaGrid>
       <InfoBarWrapper>
         <InfoBar>
