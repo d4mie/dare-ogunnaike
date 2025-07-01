@@ -6,18 +6,19 @@ const AboutMe = () => (
     <section className="contact">
       <div className="contact-description">
         <div className="contact-description-item">
-          <p><span>EN</span> Dare.Ogunnaike Bureau is a [city]-based art direction and design practice founded by Dare Ogunnaike. The bureau creates visual identities, editorial objects, and spatial experiences for clients across diverse fields.</p>
-          <p><span>FR</span> Dare.Ogunnaike Bureau est un bureau de direction artistique et design graphique basé à [city], fondé par Dare Ogunnaike. Le bureau crée des identités visuelles, des objets éditoriaux et des expériences spatiales pour des clients dans divers domaines.</p>
+          <p><span>EN</span> Dare.Ogunnaike is an Art Director & Graphic Designer at BELONWUS. Previously, he was a Brand Designer at Rise Vest. He received a BSc in Architecture from the University of Lagos in 2017 and has since built a multifaceted and dynamic career in design, spanning architecture, industrial design, and set design.</p>
+          <p><span>FR</span> Dare.Ogunnaike est directeur artistique et graphiste chez BELONWUS. Auparavant, il était designer de marque chez Rise Vest. Il a obtenu une licence en architecture à l'Université de Lagos en 2017 et a depuis mené une carrière polyvalente et dynamique dans le design, couvrant l'architecture, le design industriel et la scénographie.</p>
+          <p className="about-hello">Hello 👋 don't hesitate to write to us to receive a detailed portfolio, or to meet and discuss a project.</p>
         </div>
         <div>
           <div className="contact-description-refs">
             <h2>Contact</h2>
-            <ul>
-              <li><a href="#" target="_blank">@placeholder</a></li>
-              <li>placeholder@email.com</li>
-              <li>+234 000 000 0000</li>
-              <li>123 Placeholder Street</li>
-              <li>Lagos, Nigeria</li>
+            <ul className="about-contact-list">
+              <li>@dare.ogunnnaike</li>
+              <li>dareogunnaike@gmail.com</li>
+              <li>‭+234 (0)818 971 8428‬</li>
+              <li>11 Monsuro Road Abule Oja Lagos</li>
+              <li>Nigeria</li>
             </ul>
           </div>
           <div className="contact-description-refs">
