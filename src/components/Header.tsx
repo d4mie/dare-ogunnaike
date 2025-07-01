@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import '../styles/typography.css';
+import { Link } from 'react-router-dom';
 
 const HeaderContainer = styled.header`
   position: fixed;

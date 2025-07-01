@@ -78,52 +78,6 @@ const ProjectCategory = styled.p`
   color: white;
 `;
 
-const ProjectInfo = styled.div`
-  position: fixed;
-  bottom: 2rem;
-  left: 3rem;
-  right: 3rem;
-const ProjectInfo = styled.div`
-  position: fixed;
-  bottom: 2rem;
-  left: 3rem;
-  right: 3rem;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  z-index: 1000;
-  mix-blend-mode: difference;
-  color: white;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-
-  ${ProjectDetailContainer}:hover & {
-    opacity: 1;
-  }
-`;
-
-const InfoSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-`;
-
-const InfoLabel = styled.h3`
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin: 0;
-  opacity: 0.7;
-`;
-
-const InfoText = styled.p`
-  font-size: 1.1rem;
-  margin: 0;
-  font-weight: 500;
-  line-height: 1.4;
-`;
-
 const MediaGrid = styled.div`
   display: flex;
   flex-direction: column;
@@ -325,32 +279,6 @@ const ProjectDetail = () => {
           )}
         </MediaContainer>
       </MediaGrid>
-      <ProjectInfo>
-        {project.description && (
-          <InfoSection>
-            <InfoLabel>About</InfoLabel>
-            <InfoText>{project.description}</InfoText>
-          </InfoSection>
-        )}
-        {project.client && (
-          <InfoSection>
-            <InfoLabel>Client</InfoLabel>
-            <InfoText>{project.client}</InfoText>
-          </InfoSection>
-        )}
-        {project.role && (
-          <InfoSection>
-            <InfoLabel>Role</InfoLabel>
-            <InfoText>{project.role}</InfoText>
-          </InfoSection>
-        )}
-        {project.collaborators && project.collaborators.length > 0 && (
-          <InfoSection>
-            <InfoLabel>Collaborators</InfoLabel>
-            <InfoText>{project.collaborators.join(', ')}</InfoText>
-          </InfoSection>
-        )}
-      </ProjectInfo>
       <InfoBarWrapper>
         <InfoBar>
           <InfoTitle>
