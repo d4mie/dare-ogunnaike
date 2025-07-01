@@ -57,7 +57,6 @@ const Header = () => {
     <HeaderContainer>
       <Logo href="/">Dare.Ogunnaike</Logo>
       <Nav>
-        <NavLink to="/">Work</NavLink> {/* Assuming "Work" should also navigate to home or a specific work section */}
         <NavLink to="/about">About</NavLink> {/* Change href to to="/about" */}
       </Nav>
     </HeaderContainer>
