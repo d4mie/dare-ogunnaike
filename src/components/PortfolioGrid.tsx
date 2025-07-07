@@ -21,9 +21,9 @@ export interface Project {
 const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 4.5rem 3.5rem;
-  padding: 6.5rem 4vw 4rem 4vw;
-  max-width: 1600px;
+  gap: 2.5rem 2rem;
+  padding: 3.5rem 2vw 2rem 2vw;
+  max-width: 1400px;
   margin: 0 auto;
   width: 100%;
   background: none;
@@ -31,13 +31,13 @@ const GridContainer = styled.div`
 
   @media (max-width: 1100px) {
     grid-template-columns: repeat(2, 1fr);
-    gap: 3rem 2rem;
-    padding: 5rem 3vw 3rem 3vw;
+    gap: 2rem 1.2rem;
+    padding: 2.5rem 2vw 1.5rem 2vw;
   }
   @media (max-width: 700px) {
     grid-template-columns: 1fr;
-    gap: 2.2rem 0;
-    padding: 3.5rem 2vw 2rem 2vw;
+    gap: 1.2rem 0;
+    padding: 1.5rem 1vw 1rem 1vw;
   }
 `;
 
@@ -91,22 +91,22 @@ const ProjectInfo = styled.div`
 
 const ProjectTitle = styled.h3`
   margin: 0;
-  font-family: 'Alpha', 'NeueHaasGroteskText Pro', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', helvetica, arial, sans-serif;
-  font-size: 2.1rem;
+  font-family: 'Alpha', 'Neue Haas Grotesk', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', helvetica, arial, sans-serif;
+  font-size: 1.2rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.01em;
   color: #111;
-  line-height: 1.08;
+  line-height: 1.15;
 `;
 
 const ProjectCategory = styled.p`
   margin: 0;
-  font-size: 1.05rem;
-  color: #888;
+  font-size: 1.3rem;
+  color: #222;
   font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.09em;
   text-align: right;
   line-height: 1.1;
 `;

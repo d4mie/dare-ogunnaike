@@ -47,7 +47,7 @@ const ProjectHeader = styled.div`
 
 const HeaderLink = styled(Link)`
   color: white;
-  font-size: 1.1rem;
+  font-size: var(--f-s);
   font-weight: 500;
   text-decoration: none;
   transition: color 0.2s;

@@ -18,7 +18,7 @@ const HeaderContainer = styled.header`
 `;
 
 const Logo = styled.a`
-  font-size: var(--font-size-nav);
+  font-size: var(--f-s);
   font-weight: var(--font-weight-medium);
   color: white;
   margin: 0;
@@ -41,7 +41,7 @@ const Nav = styled.nav`
 const NavLink = styled(Link)` // Change styled.a to styled(Link)
   text-decoration: none;
   color: white;
-  font-size: var(--font-size-nav);
+  font-size: var(--f-s);
   font-weight: var(--font-weight-medium);
   pointer-events: auto;
   cursor: pointer;
@@ -57,6 +57,7 @@ const Header = () => {
     <HeaderContainer>
       <Logo href="/">Dare.Ogunnaike</Logo>
       <Nav>
+        <NavLink to="/portfolio">Index</NavLink>
         <NavLink to="/about">About</NavLink> {/* Change href to to="/about" */}
       </Nav>
     </HeaderContainer>

@@ -14,8 +14,17 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Alpha';
+  src: url('../../fonts/alpha.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --font-primary: 'Neue Haas Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-primary: 'Alpha', 'Neue Haas Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --f-s: 1.2rem;
   --font-size-nav: 14px;
   --font-size-body: 14px;
   --font-size-small: 12px;
