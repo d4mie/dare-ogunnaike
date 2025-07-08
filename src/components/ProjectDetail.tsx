@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { projects, Project } from './PortfolioGrid';
@@ -58,26 +58,6 @@ const HeaderLink = styled(Link)`
   }
 `;
 
-const ProjectTitle = styled.h1`
-  font-size: 1.1rem;
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin: 0;
-  color: white;
-  margin: 0;
-  color: white;
-`;
-
-const ProjectCategory = styled.p`
-  font-size: 1.1rem;
-  margin: 0;
-  font-weight: 500;
-  color: white;
-  margin: 0;
-  font-weight: 500;
-  color: white;
-`;
-
 const MediaGrid = styled.div`
   display: flex;
   flex-direction: column;
@@ -111,9 +91,9 @@ const MediaContainer = styled.div`
   justify-content: center;
   width: 80vw;
   max-width: 900px;
-  height: 55vh;
-  max-height: 520px;
-  margin: 7rem auto 2rem auto;
+  height: calc(100vh - 2.5rem - 7vh - 0.8rem);
+  max-height: none;
+  margin: 2.5rem auto 0.2rem auto;
   background: #f8f8f8;
   border-radius: 18px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.07);
@@ -138,24 +118,21 @@ const ProjectVideo = styled.video`
 `;
 
 const NextProjectButton = styled.button`
-  position: fixed;
-  right: 3rem;
-  bottom: 8.5vh;
   background: none;
   border: none;
-  color: white;
+  color: #181818;
   font-size: 1.1rem;
   font-weight: 500;
   cursor: pointer;
-  z-index: 1200;
   display: flex;
   align-items: center;
   overflow: hidden;
   transition: color 0.2s;
-  mix-blend-mode: difference;
+  margin-left: auto;
+  z-index: 1200;
 
   &:hover {
-    color: #61dafb;
+    /* No color change on hover */
   }
 
   .next-text {
@@ -255,10 +232,6 @@ const ProjectDetail = () => {
     );
   }
 
-  const handleMediaClick = () => {
-    setCurrentMediaIndex((prevIndex) => (prevIndex + 1) % project.images.length);
-  };
-
   const media = project.images[currentMediaIndex];
 
   const currentIndex = projects.findIndex((p) => p.id === project.id);
@@ -294,21 +267,30 @@ const ProjectDetail = () => {
         <ProjectDetailPage
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
+          onClick={e => {
+            const rect = (e.target as HTMLElement).getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            if (x > rect.width / 2) {
+              // Right side: previous image
+              setCurrentMediaIndex(prevIndex => (prevIndex - 1 + project.images.length) % project.images.length);
+            } else {
+              // Left side: next image
+              setCurrentMediaIndex(prevIndex => (prevIndex + 1) % project.images.length);
+            }
+          }}
         >
           <CustomCursor x={cursor.x} y={cursor.y} visible={cursor.visible} style={{ left: cursor.x, top: cursor.y }}>
             {cursor.side === 'left' ? (
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="36,8 12,24 36,40" fill="#000" />
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="24,5 8,16 24,27" fill="#000" />
               </svg>
             ) : (
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="12,8 36,24 12,40" fill="#000" />
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="8,5 24,16 8,27" fill="#000" />
               </svg>
             )}
           </CustomCursor>
-          <MediaContainer
-            onClick={handleMediaClick}
-          >
+          <MediaContainer>
             {media.type === 'video' ? (
               <ProjectVideo
                 src={media.src}
@@ -333,16 +315,16 @@ const ProjectDetail = () => {
             {project.title}
             {techDetails && <InfoTech>{techDetails}</InfoTech>}
           </InfoTitle>
+          <NextProjectButton onClick={handleNextProject}>
+            <span className="next-text">Next project</span>
+            <span className="arrow">→</span>
+          </NextProjectButton>
         </InfoBar>
         <Modal tabIndex={0}>
           {project.description && <p>{project.description}</p>}
           {/* Add more details if needed */}
         </Modal>
       </InfoBarWrapper>
-      <NextProjectButton onClick={handleNextProject}>
-        <span className="next-text">Next project</span>
-        <span className="arrow">→</span>
-      </NextProjectButton>
     </ProjectDetailContainer>
   );
 };
