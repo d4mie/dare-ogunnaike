@@ -21,7 +21,7 @@ export interface Project {
 const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem 2rem;
+  gap: 1.2rem 1rem;
   padding: 3.5rem 2vw 2rem 2vw;
   max-width: 1400px;
   margin: 0 auto;
@@ -31,26 +31,36 @@ const GridContainer = styled.div`
 
   @media (max-width: 1100px) {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem 1.2rem;
-    padding: 2.5rem 2vw 1.5rem 2vw;
+    gap: 1rem 1rem;
+    padding: 3.3rem 1vw 1.5rem 1vw;
+    
+    // Set height for middle screens
+    & > div > div {
+      aspect-ratio: 4/4;
+    }
   }
   @media (max-width: 700px) {
     grid-template-columns: 1fr;
-    gap: 1.2rem 0;
-    padding: 1.5rem 1vw 1rem 1vw;
+    gap: 0.2rem 0;
+    padding: 0.1rem 1vw 0.5rem 1vw;
+    
+    // Set height for smallest screens
+    & > div > div {
+      aspect-ratio: 4/3;
+    }
   }
 `;
 
 const ProjectCard = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 0.4rem;
   width: 100%;
 `;
 
 const MediaContainer = styled.div`
   position: relative;
-  aspect-ratio: 4/3;
+  aspect-ratio: 4/2.6;
   overflow: hidden;
   cursor: pointer;
   background: #fff;
@@ -81,34 +91,23 @@ const ProjectVideo = styled.video`
 `;
 
 const ProjectInfo = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  font-family: 'Alpha', 'NeueHaasGroteskText Pro', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', helvetica, arial, sans-serif;
+  display: block;
+  text-align: left;
+  font-family: var(--font-primary);
   padding: 0 0.1rem;
 `;
 
-const ProjectTitle = styled.h3`
+const ProjectText = styled.p`
   margin: 0;
-  font-family: 'Alpha', 'Neue Haas Grotesk', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', helvetica, arial, sans-serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.01em;
-  color: #111;
-  line-height: 1.15;
-`;
-
-const ProjectCategory = styled.p`
-  margin: 0;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   color: #222;
   font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.09em;
-  text-align: right;
-  line-height: 1.1;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
 `;
 
 // Project data organized by series
@@ -164,7 +163,7 @@ export const projects: Project[] = [
       { src: "/images/Octafx Installation with Belonwus.jpg", type: "image" },
       { src: "/images/OctaFx TVC with Belonwus.mp4", type: "video" },
       { src: "/images/Octa with Belonwus_01.jpg", type: "image" },
-      { src: "/images/Octa with Belonwus_02.jpg.jpg", type: "image" },
+      { src: "/images/Octa with Belonwus_02.jpg", type: "image" },
     ]
   },
   {
@@ -187,7 +186,7 @@ export const projects: Project[] = [
     images: [
       { src: "/images/Bathroom Design with DHK_01.jpg", type: "image" },
       { src: "/images/Bathroom Design with DHK_02.jpg", type: "image" },
-      { src: "/images/Bathroom Design with DHK_03.jpg.jpg", type: "image" },
+      { src: "/images/Bathroom Design with DHK_03.jpg", type: "image" },
     ]
   },
   {
@@ -204,7 +203,7 @@ export const projects: Project[] = [
   {
     id: 8,
     title: "Spotify",
-    category: "Design",
+    category: "Set Design",
     images: [
       { src: "/images/Spotify with Belonwus_01.jpg", type: "image" },
       { src: "/images/Spotify with Belonwus_02.jpg", type: "image" },
@@ -236,16 +235,16 @@ export const projects: Project[] = [
   {
     id: 11,
     title: "Maggi",
-    category: "Design",
+    category: "Set Design",
     images: [
       { src: "/images/Maggi with Belonwus_01.jpg", type: "image" },
-      { src: "/images/Maggi with Belonwus_02.jpg.jpg", type: "image" },
+      { src: "/images/Maggi with Belonwus_02.jpg", type: "image" },
     ]
   },
   {
     id: 12,
     title: "Fund$ Music Video",
-    category: "Video",
+    category: "Set Design",
     images: [
       { src: "/images/Fund$ Music Video with Belonwus.mp4", type: "video" },
     ]
@@ -284,47 +283,50 @@ const PortfolioGrid = () => {
 
   return (
     <GridContainer>
-      {projects.map((project) => {
-        const isHovered = hoveredStates[project.id];
-        // Always show first media by default, second media when hovered
-        const currentMedia = isHovered && project.images.length > 1 
-          ? project.images[1] 
-          : project.images[0];
-        
-        return (
-          <ProjectCard 
-            key={project.id}
-            onClick={() => handleProjectClick(project.id)}
-            style={{ cursor: 'pointer' }}
-          >
-            <MediaContainer
-              onMouseEnter={() => handleMouseEnter(project.id)}
-              onMouseLeave={() => handleMouseLeave(project.id)}
+        {projects.map((project) => {
+          const isHovered = hoveredStates[project.id];
+          // Always show first media by default, second media when hovered
+          const currentMedia = isHovered && project.images.length > 1 
+            ? project.images[1] 
+            : project.images[0];
+          
+          return (
+            <ProjectCard 
+              key={project.id}
+              onClick={() => handleProjectClick(project.id)}
+              style={{ cursor: 'pointer' }}
             >
-              {currentMedia?.type === 'video' ? (
-                <ProjectVideo
-                  src={currentMedia.src}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  controls={false}
-                  preload="auto"
-                />
-              ) : (
-                <ProjectImage
-                  src={currentMedia?.src}
-                  alt={project.title}
-                />
-              )}
-            </MediaContainer>
-            <ProjectInfo>
-              <ProjectTitle>{project.title}</ProjectTitle>
-              <ProjectCategory>{project.category}</ProjectCategory>
-            </ProjectInfo>
-          </ProjectCard>
-        );
-      })}
+              <MediaContainer
+                onMouseEnter={() => handleMouseEnter(project.id)}
+                onMouseLeave={() => handleMouseLeave(project.id)}
+              >
+                {currentMedia?.type === 'video' ? (
+                  <ProjectVideo
+                    src={currentMedia.src}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    controls={false}
+                    preload="auto"
+                  />
+                ) : (
+                  <ProjectImage
+                    src={currentMedia?.src}
+                    alt={project.title}
+                  />
+                )}
+              </MediaContainer>
+              <ProjectInfo>
+                <ProjectText>
+                  {project.title}
+                  <span style={{width:'0.7rem', display:'inline-block'}}></span>
+                  {project.category}
+                </ProjectText>
+              </ProjectInfo>
+            </ProjectCard>
+          );
+        })}
     </GridContainer>
   );
 };

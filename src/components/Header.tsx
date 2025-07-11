@@ -5,21 +5,44 @@ import { Link } from 'react-router-dom';
 
 const HeaderContainer = styled.header`
   position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  mix-blend-mode: difference;
+  z-index: 10;
+  pointer-events: none;
+  font-family: var(--font-primary);
+  background: transparent;
+
+  @media (max-width: 700px) {
+    position: static;
+    margin-bottom: 0;
+  }
+`;
+
+const HeaderContent = styled.div`
   width: 100%;
-  height: 5rem;
+  max-width: 1400px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 3rem;
-  mix-blend-mode: difference;
-  z-index: 1;
-  pointer-events: none;
-  font-family: var(--font-primary);
+  padding: 0 2vw;
+
+  @media (max-width: 1100px) {
+    padding: 0 5vw;
+  }
+  @media (max-width: 700px) {
+    padding: 0 5vw;
+  }
 `;
 
 const Logo = styled.a`
   font-size: var(--f-s);
-  font-weight: var(--font-weight-medium);
+  font-weight: 400;
   color: white;
   margin: 0;
   pointer-events: auto;
@@ -35,14 +58,14 @@ const Logo = styled.a`
 
 const Nav = styled.nav`
   display: flex;
-  gap: 3rem;
+  gap: 2rem;
 `;
 
 const NavLink = styled(Link)` // Change styled.a to styled(Link)
   text-decoration: none;
   color: white;
   font-size: var(--f-s);
-  font-weight: var(--font-weight-medium);
+  font-weight: 400;
   pointer-events: auto;
   cursor: pointer;
   letter-spacing: -0.01em;
@@ -55,11 +78,13 @@ const NavLink = styled(Link)` // Change styled.a to styled(Link)
 const Header = () => {
   return (
     <HeaderContainer>
-      <Logo href="/">Dare.Ogunnaike</Logo>
-      <Nav>
-        <NavLink to="/portfolio">Index</NavLink>
-        <NavLink to="/about">About</NavLink> {/* Change href to to="/about" */}
-      </Nav>
+      <HeaderContent>
+        <Logo href="/">Dare.Ogunnaike</Logo>
+        <Nav>
+          <NavLink to="/portfolio">Index</NavLink>
+          <NavLink to="/about">About</NavLink>
+        </Nav>
+      </HeaderContent>
     </HeaderContainer>
   );
 };

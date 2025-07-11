@@ -1,4 +1,44 @@
 @font-face {
+  font-family: 'SF Pro Display';
+  src: url('../fonts/sf-pro-display/SFPRODISPLAYREGULAR.OTF') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('../fonts/sf-pro-display/SFPRODISPLAYMEDIUM.OTF') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('../fonts/sf-pro-display/SFPRODISPLAYBOLD.OTF') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('../fonts/sf-pro-display/SFPRODISPLAYBLACKITALIC.OTF') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('../fonts/sf-pro-display/SFPRODISPLAYLIGHTITALIC.OTF') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Neue Haas Grotesk';
   src: url('../fonts/neue-haas-grotesk-display-pro-cufonfonts/NeueHaasDisplayRoman.ttf') format('truetype');
   font-weight: 400;
@@ -14,16 +54,8 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Alpha';
-  src: url('../../fonts/alpha.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
-  --font-primary: 'Alpha', 'Neue Haas Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-primary: 'SF Pro Display', 'Neue Haas Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   --f-s: 1.2rem;
   --font-size-nav: 14px;
   --font-size-body: 14px;
