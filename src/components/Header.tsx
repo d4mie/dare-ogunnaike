@@ -33,10 +33,10 @@ const HeaderContent = styled.div`
   padding: 0 2vw;
 
   @media (max-width: 1100px) {
-    padding: 0 5vw;
+    padding: 0 1vw;
   }
   @media (max-width: 700px) {
-    padding: 0 5vw;
+    padding: 0 1vw;
   }
 `;
 

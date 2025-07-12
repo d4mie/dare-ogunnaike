@@ -30,24 +30,26 @@ const GridContainer = styled.div`
   box-sizing: border-box;
 
   @media (max-width: 1100px) {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem 1rem;
     padding: 3.3rem 1vw 1.5rem 1vw;
-    
-    // Set height for middle screens
-    & > div > div {
-      aspect-ratio: 4/4;
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    background: none;
+    box-sizing: border-box;
     }
   }
   @media (max-width: 700px) {
-    grid-template-columns: 1fr;
-    gap: 0.2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
     padding: 0.1rem 1vw 0.5rem 1vw;
-    
-    // Set height for smallest screens
-    & > div > div {
-      aspect-ratio: 4/3;
-    }
+    margin: 0 auto;
+    width: 100%;
+    background: none;
+    box-sizing: border-box;
   }
 `;
 
